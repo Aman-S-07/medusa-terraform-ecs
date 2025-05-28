@@ -28,6 +28,7 @@ This project deploys the Medusa open-source headless commerce backend on AWS ECS
 
 ## Project Structure
 
+```bash
 medusa-terraform-ecs/
 │
 ├── medusa-app/ # Medusa backend source code & Dockerfile
@@ -38,6 +39,7 @@ medusa-terraform-ecs/
 │ └── provider.tf # AWS provider configuration
 └── .github/workflows/
 └── deploy.yml # GitHub Actions workflow for CI/CD
+```
 
 
 ---
@@ -66,8 +68,10 @@ This will create your VPC, ECS cluster, ECR repository, task definition, securit
 Authenticate Docker with AWS ECR:
 ```bash
 aws ecr get-login-password --region <your-region> | docker login --username AWS --password-stdin <aws_account_id>.dkr.ecr.<your-region>.amazonaws.com
-Build and tag your Docker image:
-docker build -t medusa-backend .
+```
+## Build and tag your Docker image:
+```bash
+docker build -t medusa-backend.
 docker tag medusa-backend:latest <aws_account_id>.dkr.ecr.<your-region>.amazonaws.com/<repo-name>:latest
 ```
 ## Push the image to ECR:
